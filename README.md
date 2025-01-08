@@ -1,16 +1,14 @@
-# final_task
+Weather Live App
+Weather Live is a mobile application built in Flutter to provide real-time weather updates for major cities in Pakistan. The app leverages the OpenWeatherMap API for fetching weather data and displays it interactively. The app supports light and dark modes, dynamic themes, and user-friendly UI.
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Features
+🌡️ Displays current weather information for:
+Quetta
+Lahore
+Multan
+Karachi
+Mingora
+🖼️ Shows corresponding city images for a better visual experience.
+🌙 Dark and Light Mode support with persistent theme selection using SharedPreferences.
+📡 Fetches live weather data via OpenWeatherMap API using the Group API for multiple cities.
+⚙️ Responsive and clean UI with dynamic updates using GetX state management.
