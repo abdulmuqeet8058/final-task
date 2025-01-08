@@ -1,8 +1,21 @@
 import 'package:final_task/weather/firstScreen.dart';
+import 'package:final_task/weather/viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final themeNotifier = darkmodepreferences();
+  await themeNotifier.loadThemePreference();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => themeNotifier,
+      child: MyApp(),
+    ),
+  );
 }
 
 /* It may show an exception while running the app 
@@ -16,13 +29,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeNotifier = Provider.of<darkmodepreferences>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Weather Live',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: themeNotifier.currentTheme,
       home: Firstscreen(),
     );
   }

@@ -1,30 +1,25 @@
-import 'dart:convert';
-
-WeatherModel initialChatFromJson(String str) =>
-    WeatherModel.fromJson(json.decode(str));
-
-String initialChatToJson(WeatherModel data) => json.encode(data.toJson());
-
 class WeatherModel {
   final double currentTemperature;
   final String weatherDescription;
-  final double humidityLevel;
+  final String cityName;
 
   WeatherModel({
     required this.currentTemperature,
     required this.weatherDescription,
-    required this.humidityLevel,
+    required this.cityName,
   });
 
+  // Factory method to create WeatherModel from JSON
   factory WeatherModel.fromJson(Map<String, dynamic> json) => WeatherModel(
-        currentTemperature: json["Current temperature"],
-        weatherDescription: json["Weather description"],
-        humidityLevel: json["Humidity level"],
+        currentTemperature: json['main']['temp']?.toDouble() ?? 0.0,
+        weatherDescription: json['weather']?[0]?['description'] ?? 'Unknown',
+        cityName: json['name'] ?? 'Unknown City',
       );
 
+  // Method to convert WeatherModel to JSON (optional, if needed)
   Map<String, dynamic> toJson() => {
         "Current temperature": currentTemperature,
         "Weather description": weatherDescription,
-        "Humidity level": humidityLevel,
+        "City name": cityName,
       };
 }
